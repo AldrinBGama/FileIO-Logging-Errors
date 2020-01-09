@@ -15,7 +15,7 @@ public class Read {
         try {
             String strCurrentLine;
 
-            objReader = new BufferedReader(new FileReader("visitor_Aldrin_gama.txt"));
+            objReader = new BufferedReader(new FileReader("visitor_txtName_.txt"));
 
             while ((strCurrentLine = objReader.readLine()) != null) {
                 System.out.println(strCurrentLine);
