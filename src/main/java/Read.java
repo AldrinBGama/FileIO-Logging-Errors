@@ -1,34 +1,31 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Read {
-    String name;
-    Scanner scanner = new Scanner(System.in);
+    static String name;
+    static String surname;
+    private final static Logger LOGGER = Logger.getLogger(Read.class.getName());
 
-    public void load() {
+    public static void load() throws IOException {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Name");
         name = scanner.nextLine();
+        System.out.println("Enter Surname");
+        surname = scanner.nextLine();
+        String file = ("visitor_" + name + "_" + surname + ".txt");
 
-        BufferedReader objReader = null;
+        FileReader fr = null;
         try {
-            String strCurrentLine;
-
-            objReader = new BufferedReader(new FileReader("visitor_txtName_.txt"));
-
-            while ((strCurrentLine = objReader.readLine()) != null) {
-                System.out.println(strCurrentLine);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (objReader != null)
-                    objReader.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            fr = new FileReader(file);
+            int i;
+            while ((i = fr.read()) != -1)
+                System.out.print((char) i);
+            fr.close();
+            LOGGER.info(file+" profile view");
+        } catch (FileNotFoundException e) {
+            LOGGER.info("file not found");
         }
     }
 }
