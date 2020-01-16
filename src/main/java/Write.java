@@ -23,7 +23,6 @@ public class Write {
     String  comment;
     int     age;
 
-
     Scanner input = new Scanner(System.in);
 
     public void save() {
@@ -35,34 +34,34 @@ public class Write {
             System.out.println("Enter Age: ");
             age = input.nextInt();
             input.nextLine();
-            System.out.println("Please comments about the visitor and press ENTER: ");
+            System.out.println("Please write your comments about the visitor and press ENTER: ");
             comment = input.nextLine();
             System.out.println("Enter attendant's Name: ");
             att_name = input.nextLine();
             String run;
 
-                while (true) {
-                    FileWriter fileWriter = null;
-                    try {
-                        File file = new File("visitor_" + vis_name + "_" + surname + ".txt");
-                        boolean fileExists = file.exists();
-                        if (fileExists){
-                            LOGGER.info("visitor_" + vis_name + "_" + surname + ".txt"+" file exist");
-                        }else{
-                            fileWriter = new FileWriter("visitor_" + vis_name + "_" + surname + ".txt");
-                            fileWriter.write("Full name: " + vis_name + " " + surname + "\n" + "Age: "
-                                    + Integer.toString(age) + "\n" + "Date of visit: " + sdf.format(date) + "\n"
-                                    + "Time of visit: " + timeFormat.format(time) + "\n"
-                                    + "Attendant's Comments about the visitor" + "\n" + comment + "\n"
-                                    + "name of the person who assisted the visitor: \n" + att_name);
-                            fileWriter.close();
-                            LOGGER.info("visitor_" + vis_name + "_" + surname + ".txt"+" file saved!");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        LOGGER.info("INPUT MISMATCH");
+            while (true) {
+                FileWriter fileWriter = null;
+                try {
+                    File file = new File("visitor_" + vis_name + "_" + surname + ".txt");
+                    boolean fileExists = file.exists();
+                    if (fileExists){
+                        LOGGER.info("visitor_" + vis_name + "_" + surname + ".txt"+" file already exist");
+                    } else {
+                        fileWriter = new FileWriter("visitor_" + vis_name + "_" + surname + ".txt");
+                        fileWriter.write("Full name: " + vis_name + " " + surname + "\n" + "Age: "
+                                + Integer.toString(age) + "\n" + "Date of visit: " + sdf.format(date) + "\n"
+                                + "Time of visit: " + timeFormat.format(time) + "\n"
+                                + "Attendant's Comments about the visitor" + "\n" + comment + "\n"
+                                + "name of the person who assisted the visitor: \n" + att_name);
+                        fileWriter.close();
+                        LOGGER.info("visitor_" + vis_name + "_" + surname + ".txt"+" file saved!");
                     }
-                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    LOGGER.info("INPUT MISMATCH");
                 }
+                return;
             }
+    }
 }

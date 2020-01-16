@@ -9,8 +9,8 @@ public class Main {
 
     do {
         int opt;
-        System.out.println("Press 1 to enter add visitor or Press 2 to view  visitors profile");
-        opt=s.nextInt();
+        System.out.println("Press 1 to add a visitor or Press 2 to view  visitors profile");
+        opt = s.nextInt();
         if (opt == 1) {
             do {
                 Write write = new Write();
@@ -28,6 +28,7 @@ public class Main {
             } while (input.equalsIgnoreCase("yes"));
         }
         System.out.println("Type Yes to run or No to exit");
-        rerun=s.nextLine();
-    }while (rerun.equalsIgnoreCase("yes"));
-}}
+        rerun = s.nextLine();
+        } while (rerun.equalsIgnoreCase("yes"));
+    }
+}
