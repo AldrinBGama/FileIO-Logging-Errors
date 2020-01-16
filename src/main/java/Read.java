@@ -1,6 +1,4 @@
 import java.io.*;
-import java.*;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -9,7 +7,7 @@ public class Read {
     static String surname;
     private final static Logger LOGGER = Logger.getLogger(Read.class.getName());
 
-    public static void load() throws IOException {
+    public static String load() throws IOException {
         String file =("visitor_" + name + "_" + surname + ".txt");
         File file1 = new File(file);
         String[] files = file1.list();
@@ -33,5 +31,10 @@ public class Read {
         } catch (FileNotFoundException e) {
             LOGGER.info("file not found");
         }
+        return ("visitor_" + name + "_" + surname + ".txt");
+    }
+
+    public String load(String tfn) {
+        return "Users/bahlegama/IdeaProjects/FileIOLoggingErrors";
     }
 }
